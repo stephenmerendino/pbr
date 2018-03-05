@@ -1,0 +1,125 @@
+#include "Data/HLSL/Util/cb_common.h"
+#include "Data/HLSL/Util/util.h"
+
+// -------------------------------------------------------------
+// Textures
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Samplers
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Data Structures 
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Constant Buffers
+// -------------------------------------------------------------
+cbuffer tesselation_factors : register(b6)
+{
+	uint min_tess_factor;
+	uint max_tess_factor;
+	float min_lod_distance;
+	float max_lod_distance;
+}
+
+
+// -------------------------------------------------------------
+// Vertex Format(s)
+// -------------------------------------------------------------
+struct vertex_out_t
+{
+	float4 position : SV_Position;
+	float3 worldPosition : WORLD_POSITION;
+	float4 tint : TINT;
+	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
+    float3 tangent : TANGENT;
+    float3 bitangent : BITANGENT;
+};
+
+struct hs_out_data_t
+{
+	float edge_tess[3] : SV_TessFactor;
+	float inside_tess : SV_InsideTessFactor;
+};
+
+struct hs_control_point_t
+{
+	float3 position: POSITION;
+	float3 worldPosition : WORLD_POSITION;
+
+	float4 tint : TINT;
+	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
+    float3 tangent : TANGENT;
+    float3 bitangent : BITANGENT;
+};
+
+
+// -------------------------------------------------------------
+// Helper Functions
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Vertex Shader
+// -------------------------------------------------------------
+hs_out_data_t HullConstantFunction(InputPatch<vertex_out_t, 3> patch, 
+								   uint patch_id : SV_PrimitiveID)
+{
+	hs_out_data_t out_data;
+	float dist0 = abs(length(EYE_WORLD_POSITION.xyz - patch[0].worldPosition));
+	float dist1 = abs(length(EYE_WORLD_POSITION.xyz - patch[1].worldPosition));
+	float dist2 = abs(length(EYE_WORLD_POSITION.xyz - patch[2].worldPosition));
+
+	float lod_range = max_lod_distance - min_lod_distance;
+
+	float dist0_t = saturate(range_map(dist0, min_lod_distance, max_lod_distance, 0.0f, 1.0f));
+	float dist1_t = saturate(range_map(dist1, min_lod_distance, max_lod_distance, 0.0f, 1.0f));
+	float dist2_t = saturate(range_map(dist2, min_lod_distance, max_lod_distance, 0.0f, 1.0f));
+
+	// tesselation factors
+	out_data.edge_tess[0] = (1.0f - dist0_t) * (max_tess_factor - min_tess_factor) + min_tess_factor;
+	out_data.edge_tess[1] = (1.0f - dist1_t) * (max_tess_factor - min_tess_factor) + min_tess_factor;
+	out_data.edge_tess[2] = (1.0f - dist2_t) * (max_tess_factor - min_tess_factor) + min_tess_factor;
+
+	out_data.edge_tess[0] = clamp(out_data.edge_tess[0], min_tess_factor, max_tess_factor);
+	out_data.edge_tess[1] = clamp(out_data.edge_tess[1], min_tess_factor, max_tess_factor);
+	out_data.edge_tess[2] = clamp(out_data.edge_tess[2], min_tess_factor, max_tess_factor);
+
+	out_data.inside_tess = out_data.edge_tess[0] + out_data.edge_tess[1] + out_data.edge_tess[2] / 3.0f;
+
+	return out_data;
+}
+
+
+[domain("tri")]
+[partitioning("fractional_even")]
+[outputtopology("triangle_cw")]
+[outputcontrolpoints(3)]
+[patchconstantfunc("HullConstantFunction")]
+hs_control_point_t HullFunction(InputPatch<vertex_out_t, 3> patch, 
+								uint point_id : SV_OutputControlPointID, 
+								uint patch_id : SV_PrimitiveID)
+{
+	hs_control_point_t out_data;
+
+	out_data.position = patch[point_id].position.xyz;
+	out_data.worldPosition = patch[point_id].worldPosition;
+	out_data.tint = patch[point_id].tint;
+	out_data.texCoord = patch[point_id].texCoord;
+	out_data.normal = patch[point_id].normal;
+	out_data.tangent = patch[point_id].bitangent;
+	out_data.bitangent = patch[point_id].bitangent;
+
+	return out_data;
+}

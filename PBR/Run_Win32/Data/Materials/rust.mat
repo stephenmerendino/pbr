@@ -1,0 +1,8 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+
+    <albedo src="Data/Images/rust_streaks/rust_albedo_fast.png" />
+    <normal src="Data/Images/rust_streaks/rust_normal_fast.png" />
+    <smoothness src="Data/Images/rust_streaks/rust_smoothness_fast.png" />
+    <metalness src="Data/Images/rust_streaks/rust_metalness_fast.png" />
+</material>

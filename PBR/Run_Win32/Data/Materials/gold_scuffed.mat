@@ -1,0 +1,8 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <albedo src="Data/Images/gold_scuffed/gold_scuffed_basecolor_fast.png" />
+    <normal src="Data/Images/gold_scuffed/gold_scuffed_normal_fast.png" />
+    <smoothness src="Data/Images/gold_scuffed/gold_scuffed_smoothness_fast.png" />
+    <metalness src="Data/Images/gold_scuffed/gold_scuffed_metallic_fast.png" />
+</material>

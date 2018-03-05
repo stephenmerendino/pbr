@@ -1,0 +1,36 @@
+# Config Settings
+# Saved on 03/03/18 @ 08:45:20 PM
+
+
+# [STRING]
+"config_autosave_filepath" = "Data/Config.dat.autosave"
+"windowTitle" = "  PBR  |  Stephen Merendino  |  Master's Thesis  |  SMU Guildhall"
+
+
+# [BOOL]
+autosaveConfig = true
+fxaa_enabled = false
+limitFps = true
+msaa_enabled = true
+ssaa_enabled = true
+
+
+# [INT]
+fps = 60
+msaa_sample_count = 4
+resolutionHeight = 900
+resolutionWidth = 1600
+ssaa_level = 4
+
+
+# [FLOAT]
+fov = 67.000000
+
+
+# [COLOR]
+clearColor = c<7, 54, 66, 255>
+
+
+# [VEC3]
+camera_look_at = v<7.819159, 7.142297, -4.189686>
+camera_start_pos = v<8.600095, 7.456830, -4.729322>

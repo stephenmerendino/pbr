@@ -1,0 +1,9 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+
+	<!---
+    <diffuse src="Data/Images/stone_diffuse.png" />
+    <normal src="Data/Images/stone_normal.png" />
+    <spec src="Data/Images/stone_spec.png" />
+	--->
+</material>

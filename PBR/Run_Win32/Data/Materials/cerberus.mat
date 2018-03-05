@@ -1,0 +1,15 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <!--
+    <albedo src="Data/Images/cerberus/cerberus_basecolor_1k.png" />
+    <normal src="Data/Images/cerberus/cerberus_normal_1k.png" />
+    <smoothness src="Data/Images/cerberus/cerberus_smoothness_1k.png" />
+    <metalness src="Data/Images/cerberus/cerberus_metalness_1k.png" />
+    -->
+  
+    <albedo src="Data/Images/cerberus/Cerberus_A.tga" />
+    <normal src="Data/Images/cerberus/Cerberus_N.tga" />
+    <smoothness src="Data/Images/cerberus/Cerberus_S.tga" />
+    <metalness src="Data/Images/cerberus/Cerberus_M.tga" />
+</material>

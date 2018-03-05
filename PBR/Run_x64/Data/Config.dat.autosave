@@ -1,0 +1,31 @@
+# Config Settings
+# Saved on 01/18/18 @ 02:53:54 PM
+
+
+# [STRINGS]
+"//" = "useful"
+"1280" = "window_res_y"
+"commandLine" = "working"
+"config_autosave_filepath" = "Data/Config.dat.autosave"
+"for" = "matching"
+"mitsuba" = "window_res_x"
+"windowTitle" = "SD6: Net Asteroids"
+
+
+# [BOOLS]
+limitFps = true
+
+
+# [INTS]
+fps = 60
+resolutionHeight = 900
+resolutionWidth = 1600
+
+
+# [FLOATS]
+fov = 60.000000
+
+
+# [COLORS]
+//clearColor = <30, 30, 30, 255>
+clearColor = <0, 0, 0, 255>

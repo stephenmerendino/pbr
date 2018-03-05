@@ -1,0 +1,125 @@
+#include "Data/HLSL/Util/noise.h"
+#include "Data/HLSL/Util/cb_common.h"
+
+// -------------------------------------------------------------
+// Textures
+// -------------------------------------------------------------
+Texture2D<float4> t_height : register(t6);
+
+
+// -------------------------------------------------------------
+// Samplers
+// -------------------------------------------------------------
+SamplerState s_linear : register(s0);
+
+
+
+// -------------------------------------------------------------
+// Data Structures 
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Constant Buffers
+// -------------------------------------------------------------
+
+
+
+// -------------------------------------------------------------
+// Vertex Format(s)
+// -------------------------------------------------------------
+struct hs_out_data_t
+{
+	float edge_tess[3] : SV_TessFactor;
+	float inside_tess : SV_InsideTessFactor;
+};
+
+struct hs_control_point_t
+{
+	float3 position: POSITION;
+	float3 worldPosition : WORLD_POSITION;
+
+	float4 tint : TINT;
+	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
+    float3 tangent : TANGENT;
+    float3 bitangent : BITANGENT;
+};
+
+struct ds_out_t
+{
+	float4 position : SV_Position;
+	float3 worldPosition : WORLD_POSITION;
+	float4 tint : TINT;
+	float2 texCoord : TEXCOORD;
+	float3 normal : NORMAL;
+    float3 tangent : TANGENT;
+    float3 bitangent : BITANGENT;
+};
+
+
+
+// -------------------------------------------------------------
+// Helper Functions
+// -------------------------------------------------------------
+
+float2 blend(float2 inputs[3], float3 uvw)
+{
+	return inputs[0] * uvw.x + inputs[1] * uvw.y + inputs[2] * uvw.z;
+}
+
+float3 blend(float3 inputs[3], float3 uvw)
+{
+	return inputs[0] * uvw.x + inputs[1] * uvw.y + inputs[2] * uvw.z;
+}
+
+float4 blend(float4 inputs[3], float3 uvw)
+{
+	return inputs[0] * uvw.x + inputs[1] * uvw.y + inputs[2] * uvw.z;
+}
+
+
+// -------------------------------------------------------------
+// Vertex Shader
+// -------------------------------------------------------------
+[domain("tri")]
+ds_out_t DomainFunction(const hs_out_data_t patch_data, 
+						float3 uvw : SV_DomainLocation, 
+						const OutputPatch<hs_control_point_t, 3> patch)
+{
+	ds_out_t ds_out;
+
+	// easy stuff to blend
+	float3 normals[3] = { patch[0].normal, patch[1].normal, patch[2].normal };
+	ds_out.normal = normalize(blend(normals, uvw));
+
+	float2 texCoords[3] = { patch[0].texCoord, patch[1].texCoord, patch[2].texCoord };
+	ds_out.texCoord = blend(texCoords, uvw);
+
+	float4 tints[3] = { patch[0].tint, patch[1].tint, patch[2].tint };
+	ds_out.tint = blend(tints, uvw);
+
+	float3 tangents[3] = { patch[0].tangent, patch[1].tangent, patch[2].tangent };
+	ds_out.tangent = blend(tangents, uvw);
+
+	float3 bitangents[3] = { patch[0].bitangent, patch[1].bitangent, patch[2].bitangent };
+	ds_out.bitangent = blend(bitangents, uvw);
+
+	// blend to get position
+	float3 world_positions[3] = { patch[0].worldPosition, patch[1].worldPosition, patch[2].worldPosition };
+	float3 world_pos = blend(world_positions, uvw);
+
+	float height = t_height.SampleLevel(s_linear, ds_out.texCoord, 0.0f).r;
+	world_pos.xyz += ds_out.normal * height * MAT_PARAMS.height_map_scale;
+
+	ds_out.tint = float4(height, 0, 0, 1);
+
+	float4 view_pos = mul(float4(world_pos, 1.0f), VIEW);
+	float4 clip_pos = mul(view_pos, PROJECTION);
+
+	ds_out.worldPosition = world_pos;
+	ds_out.position = clip_pos;
+
+	return ds_out;
+}

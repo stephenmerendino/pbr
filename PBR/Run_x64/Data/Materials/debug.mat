@@ -1,0 +1,5 @@
+<material>
+    <shader src="Data/Shaders/nop_texture.shader" />
+
+    <diffuse color="pink"/>
+</material>

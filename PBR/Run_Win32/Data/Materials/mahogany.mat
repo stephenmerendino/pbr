@@ -1,0 +1,8 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <albedo src="Data/Images/mahogany/mahogany_basecolor_fast.png" />
+    <normal src="Data/Images/mahogany/mahogany_normal_fast.png" />
+    <smoothness src="Data/Images/mahogany/mahogany_smoothness_fast.png" />
+    <ao src="Data/Images/mahogany/mahogany_ao_fast.png" />
+</material>

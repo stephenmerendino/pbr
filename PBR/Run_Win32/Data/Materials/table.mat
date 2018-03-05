@@ -1,0 +1,9 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <albedo src="Data/Images/table/table_basecolor.png" />
+    <normal src="Data/Images/table/table_normal.png" />
+    <smoothness src="Data/Images/table/table_smoothness.png" />
+    <metalness src="Data/Images/table/table_metalness.png" />
+    <height src="Data/Images/table/table_height.png" scale="0.0"/>
+</material>

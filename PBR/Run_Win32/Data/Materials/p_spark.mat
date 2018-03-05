@@ -1,0 +1,4 @@
+<material>
+    <shader src="Data/Shaders/translucent_particle.shader" />
+    <diffuse src="Data/Images/circle_gradient.png" />
+</material>

@@ -1,0 +1,148 @@
+//--------------------------------------------------------------------------------------
+// Input/Output Structures
+//--------------------------------------------------------------------------------------
+// https://msdn.microsoft.com/en-us/library/windows/desktop/ff471566(v=vs.85).asxyp
+struct compute_input_t
+{
+   uint3 group_id : SV_GroupID;              // What is my index within the context of a the dispatch call
+   uint  group_idx : SV_GroupIndex;          // Flattend version of the top
+                                             // (z * (width * height) + y * width + x)
+   uint3 group_thread_id : SV_GroupThreadID; // My thread within the context of the group
+   uint3 dispatch_id : SV_DispatchThreadID;  // My thread within context of the entire dispatch
+                                             // [5x5x1, with threads 5,5,1]  If I was in 2, 2, 0 group
+                                             // and 3, 3, 0 thread, I would be in 13 13 0 thread id
+};
+
+float range_map(float in_val, float in_min, float in_max, float out_min, float out_max)
+{
+    return ((in_val - in_min) / (in_max - in_min)) * (out_max - out_min) + out_min;
+}
+
+//--------------------------------------------------------------------------------------
+// Textures and Samplers
+//--------------------------------------------------------------------------------------
+
+cbuffer MANDLEBROT_CONSTANTS : register(b4)
+{
+    int MAX_ITERATIONS;
+    float POWER;
+    float ZOOM;
+    float OFFSET_X;
+    float OFFSET_Y;
+    float WRAP;
+    float2 PADDING;
+};
+
+cbuffer TimeBuffer : register(b1)
+{
+    float GAME_TIME;
+    float SYSTEM_TIME;
+    float GAME_FRAME_TIME;
+    float SYSTEM_FRAME_TIME;
+};
+
+Texture1D <float4> tGradient : register(t0);
+SamplerState sSampler : register(s0);
+RWTexture2D<unorm float4> tOutput : register(u0);
+
+float4 calc_mandlebrot(float2 pos)
+{
+    float x_offset = range_map(OFFSET_X, -1600.0, 1600.0, -2.5f, 1.0f);
+    float y_offset = range_map(OFFSET_Y, -900.0, 900.0, -1.0f, 1.0f);
+
+    float center_x = range_map(0.0f, -1.0f, 1.0f, -2.5f, 1.0f);
+    x_offset = x_offset - center_x;
+
+    float x_in_set = range_map(pos.x, 0, 1920.0, -2.5f, 1.0f);
+    float y_in_set = range_map(pos.y, 0, 1080.0, -1.0f, 1.0f);
+
+    if (ZOOM > 1.0f)
+    {
+        float half_x_width = 3.5f / 2.0f;
+        
+        float max_y = -y_offset + 1.0f / ZOOM;
+        float min_y = -y_offset - 1.0f / ZOOM;
+        float max_x = -x_offset + half_x_width / ZOOM;
+        float min_x = -x_offset - half_x_width / ZOOM;
+
+        x_in_set = range_map(x_in_set, x_offset - half_x_width, x_offset + half_x_width, min_x, max_x);
+        y_in_set = range_map(y_in_set, y_offset - 1.0f, y_offset + 1.0f, min_y, max_y);
+    }
+    else
+    {
+        x_in_set -= x_offset;
+        y_in_set -= y_offset;
+    }
+
+    // mandle brot
+    float x = 0.0f;
+    float y = 0.0f;
+    int iteration = 0;
+    {
+        //float upper_bound = POWER * POWER;
+        float upper_bound = (1 << 16);
+        float magnitude_sq = 0.0f;
+
+        while ((magnitude_sq < upper_bound) && (iteration < MAX_ITERATIONS))
+        {
+            float z_mag = sqrt(x * x + y * y);
+            float theta;
+            if (x == 0.0){
+                theta = 0.0;
+            }
+            else{
+                theta = atan2(y, x);
+            }
+
+            float z_pow = pow(abs(z_mag), POWER);
+
+            x = z_pow * cos(POWER * theta) + x_in_set;
+            y = z_pow * sin(POWER * theta) + y_in_set;
+
+            magnitude_sq = x * x + y * y;
+
+            iteration++;
+        }
+    }
+
+    float iteration_fl = (float) iteration;
+
+    if (iteration < MAX_ITERATIONS)
+    {
+        float log_zn = log(sqrt(x*x+y*y)) / log(POWER * POWER);
+        float nu = log(log_zn / log(POWER * POWER)) / log(POWER * POWER);
+        iteration_fl = iteration_fl + 1.0 - nu;
+
+        if (WRAP > 0.0f)
+        {
+            float wrap_percent = fmod(GAME_TIME, WRAP);
+            wrap_percent /= WRAP;
+
+            iteration_fl += MAX_ITERATIONS * wrap_percent;
+            iteration_fl = fmod(iteration_fl, MAX_ITERATIONS);
+        }
+
+        float4 color1 = tGradient.SampleLevel(sSampler, floor(iteration_fl) / MAX_ITERATIONS, 1);
+        float4 color2 = tGradient.SampleLevel(sSampler, (floor(iteration_fl) + 1) / MAX_ITERATIONS, 1);
+
+        float t = frac(iteration_fl);
+        return (1.0f - t) * color1 + (t * color2);
+    }
+    else
+    {
+        //return float4(0.0, 0.0, 0.0, 1.0);
+        return tGradient.SampleLevel(sSampler, 0.99f, 1);
+    }
+}
+
+
+//--------------------------------------------------------------------------------------
+// Pixel Shader
+//--------------------------------------------------------------------------------------
+[numthreads(16, 20, 1)]
+void ComputeFunction( compute_input_t input )
+{
+    //input.dispatch_id.xy += OFFSET;
+    float2 xy = input.dispatch_id.xy;
+    tOutput[input.dispatch_id.xy] = calc_mandlebrot(xy);
+}

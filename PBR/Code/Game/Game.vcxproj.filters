@@ -1,0 +1,373 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Main_Win32.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="GameCommon.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="App.cpp">
+      <Filter>Core</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Gameplay</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GameCommon.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="App.hpp">
+      <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.hpp">
+      <Filter>Gameplay</Filter>
+    </ClInclude>
+    <ClInclude Include="GameConfig.hpp">
+      <Filter>Config</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\Util\hsv.h">
+      <Filter>HLSL\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\Util\noise.h">
+      <Filter>HLSL\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\Util\util.h">
+      <Filter>HLSL\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\Util\cb_common.h">
+      <Filter>HLSL\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\Util\random.h">
+      <Filter>HLSL\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\Run_Win32\Data\HLSL\brdf\brdf.h">
+      <Filter>HLSL\BRDF</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Gameplay">
+      <UniqueIdentifier>{1bc08dad-a434-4839-ad38-16998a76f5db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{045012b3-e493-4b0a-9caf-ff4a2e034bc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Config">
+      <UniqueIdentifier>{e12f2887-c61e-4263-b41c-f8b386dd1af6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL">
+      <UniqueIdentifier>{d8a0074c-6212-4641-94ce-3e9903fecd80}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Materials">
+      <UniqueIdentifier>{ea2bc078-1679-4194-9205-f47e8ed75901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{709c4b79-e1c8-48c0-b221-a751df33d2ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\ImageEffects">
+      <UniqueIdentifier>{6c1cb811-9a12-455c-b76e-9bcb5d455817}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\Lighting">
+      <UniqueIdentifier>{bcd53221-e500-48e3-9daa-1585d96afbbe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\Util">
+      <UniqueIdentifier>{b58fa0b4-9925-44a0-b767-67dff7c5892a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\General">
+      <UniqueIdentifier>{afe221f9-d9e4-4737-b419-c833a29bddf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="HLSL\BRDF">
+      <UniqueIdentifier>{57675d69-38b5-4410-bd8b-ea05ec34e533}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Run_Win32\Data\Config.dat">
+      <Filter>Config</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\debug.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\drotek.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\p_smoke.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\p_spark.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\sphere.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\dot3.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\lit_directional.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\nop_texture.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\opaque_particle.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\skinning.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\translucent_particle.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\weights.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\lambert.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\stone.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\Lighting\lambert.frag">
+      <Filter>HLSL\Lighting</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\mvp.vert">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\nop_texture.frag">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\skinning.vert">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\weights.frag">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\fb_brdf.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\standard.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\Lighting\fb_brdf.frag">
+      <Filter>HLSL\Lighting</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\stone_wall.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\rust.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\ssaa.frag">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\grease_pan.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\panorama_to_cubemap.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\Util\write_pano_to_cubemap.frag">
+      <Filter>HLSL\Util</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\cerberus.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\gold_scuffed.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\mahogany.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\rough_brick.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\slippery_stone.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\brdf\ld_diffuse.frag">
+      <Filter>HLSL\BRDF</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\brdf\ld_spec.frag">
+      <Filter>HLSL\BRDF</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\brdf\hammersly.frag">
+      <Filter>HLSL\BRDF</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\brdf\dfg.frag">
+      <Filter>HLSL\BRDF</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\ld_diffuse.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\ld_spec.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\fxaa.frag">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\fxaa.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\fb_brdf_tess.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\tri_tess.domain">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\tri_tess.hull">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\HLSL\tess_passthrough.vert">
+      <Filter>HLSL\General</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\coffee_pot.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\table.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\rusted_iron.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Materials\rusted_iron2.mat">
+      <Filter>Materials</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\write_depth.shader">
+      <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Run_Win32\Data\Shaders\write_omni_depth.shader">
+      <Filter>Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\base_perlin_noise.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\black_and_white.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\desaturate.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\desert_heat.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\green_tint.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\hue_shift.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\invert.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\marble.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\multiply.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\obama_hope.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\perlin_distort.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\perlin_noise_texture.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\radial_zoom_blur_non_perlin.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\radial_zoom_blur_periodic.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\radial_zoom_blur_perlin.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\saturate.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\sepia.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\testbed.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\water_suds_perlin.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\wave.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\ImageEffects\wood.hlsl">
+      <Filter>HLSL\ImageEffects</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\ambient.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\debug_normals.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\deferred_lighting.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\directional.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\directional_no_shadows.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\dot3_lighting.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\g_buffer.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\normal_and_spec_map.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\normal_map.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\reflection.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\refraction.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\render_depth.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\shadow_map_acne.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\shadow_map_bias.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\shadow_map_pcf.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\specular.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\write_depth.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\clear.compute">
+      <Filter>HLSL\General</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\mandlebrot.compute">
+      <Filter>HLSL\General</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\nop_color.hlsl">
+      <Filter>HLSL\General</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\nop_texture.hlsl">
+      <Filter>HLSL\General</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\Run_Win32\Data\HLSL\Lighting\write_omni_depth.hlsl">
+      <Filter>HLSL\Lighting</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>

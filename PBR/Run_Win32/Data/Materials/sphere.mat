@@ -1,0 +1,7 @@
+<material>
+    <shader src="Data/Shaders/dot3.shader" />
+
+    <diffuse src="Data/Images/uncharted4.png" />
+    <!--- <normal src="Data/Images/stone_normal.png" /> -->
+    <!--- <spec src="Data/Images/stone_spec.png" /> -->
+</material>

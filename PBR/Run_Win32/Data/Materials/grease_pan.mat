@@ -1,0 +1,8 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <albedo src="Data/Images/grease_pan/grease_pan_albedo_fast.png" />
+    <normal src="Data/Images/grease_pan/grease_pan_normal_fast.png" />
+    <smoothness src="Data/Images/grease_pan/grease_pan_smoothness_fast.png" />
+    <metalness src="Data/Images/grease_pan/grease_pan_metal_fast.png" />
+</material>

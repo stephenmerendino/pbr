@@ -1,0 +1,7 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+
+    <albedo src="Data/Images/stone_wall/stone_wall_albedo.png" />
+    <normal src="Data/Images/stone_wall/stone_wall_normal.png" />
+    <smoothness src="Data/Images/stone_wall/stone_wall_roughness.png" />
+</material>

@@ -1,0 +1,9 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+  
+    <albedo src="Data/Images/coffee_pot/coffee_pot_basecolor.png" />
+    <normal src="Data/Images/coffee_pot/coffee_pot_normal.png" />
+    <smoothness src="Data/Images/coffee_pot/coffee_pot_smoothness.png" />
+    <metalness src="Data/Images/coffee_pot/coffee_pot_metalness.png" />
+    <height src="Data/Images/coffee_pot/coffee_pot_height.png" scale="0.0"/>
+</material>

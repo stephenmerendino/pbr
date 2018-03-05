@@ -1,0 +1,7 @@
+<material>
+    <shader src="Data/Shaders/lambert.shader" />
+
+    <diffuse src="Data/Images/stone_diffuse.png" />
+    <normal src="Data/Images/stone_normal.png" />
+    <spec src="Data/Images/stone_spec.png" />
+</material>

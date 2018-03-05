@@ -1,0 +1,10 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf_tess.shader" />
+  
+    <albedo src="Data/Images/slippery_stone/slippery_stone_basecolor_fast.png" />
+    <normal src="Data/Images/slippery_stone/slippery_stone_normal_fast.png" />
+    <smoothness src="Data/Images/slippery_stone/slippery_stone_smoothness_fast.png" />
+    <metalness src="Data/Images/slippery_stone/slippery_stone_metallic_fast.png" />
+    <ao src="Data/Images/slippery_stone/slippery_stone_ao_fast.png" />
+    <height src="Data/Images/slippery_stone/slippery_stone_height_fast.png" scale="0.15"/>
+</material>

@@ -1,0 +1,4 @@
+<material>
+    <shader src="Data/Shaders/translucent_particle.shader" />
+    <diffuse src="Data/Images/water_single.png" />
+</material>

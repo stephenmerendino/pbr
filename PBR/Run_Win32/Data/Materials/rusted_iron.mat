@@ -1,0 +1,8 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf.shader" />
+
+    <albedo src="Data/Images/rusted_iron/rustediron_basecolor_fast.png" />
+    <normal src="Data/Images/rusted_iron/rustediron_normal_fast.png" />
+    <smoothness src="Data/Images/rusted_iron/rustediron_smoothness_fast.png" />
+    <metalness src="Data/Images/rusted_iron/rustediron_metallic_fast.png" />
+</material>

@@ -1,0 +1,9 @@
+<material>
+    <shader src="Data/Shaders/fb_brdf_tess.shader" />
+
+    <albedo src="Data/Images/stone_wall/stone_wall_albedo_fast.png" />
+    <normal src="Data/Images/stone_wall/stone_wall_normal_fast.png" />
+    <smoothness src="Data/Images/stone_wall/stone_wall_smoothness_fast.png" />
+    <ao src="Data/Images/stone_wall/stone_wall_smoothness_fast.png" />
+    <height src="Data/Images/stone_wall/stone_wall_height_fast.png" scale="0.25"/>
+</material>

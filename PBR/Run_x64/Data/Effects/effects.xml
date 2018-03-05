@@ -1,0 +1,111 @@
+<particle_effects>
+    <particle_effect name="explosion">
+        <emitter name="smoke">
+            <location value="0.0, 10.0, 0.0">
+                <distribution type="cone" length="2" half_angle="30" />
+                <!--
+                <distribution type="range" min="0.0, 0.0, 0.0" max="10.0, 10.0, 10.0">
+                <distribution type="set">
+                    <item value="0.0, 0.0, 0.0" weight="10" />
+                    <item value="-1.0, -2.0, -3.0" weight ="3" />
+                    <item value="-5.0, -5.0, 3.0" weight ="1" />
+                </distribution>
+                <distribution type="sphere" radius="2.5"/>
+                <distribution type="cone" length="5" half_angle="30" />
+                <distribution type="cube" width="5" height="5" depth="5"/>
+                </distrubtion>
+                -->
+            </location>
+
+            <material name="Data/Materials/p_smoke.mat" />
+
+            <initial_spawn_amount value="400~700" />
+            <spawn_rate_seconds value="1000.0" />
+            <emitter_lifetime_seconds value="10.0" />
+            <particle_lifetime_seconds value="5.0~7.5" />
+
+            <initial_velocity>
+                <distribution type="range" min="1.0, 1.0, 1.0" max="2.5, 3.5, 2.5">
+            </initial_velocity>
+
+            <initial_rotational_velocity value="1.0f, 2.0f, 1.0f"/>
+            <initial_acceleration value="0.0, 0.1, 0.0" />
+            <initial_scale value="0.2, 0.2, 0.2" />
+
+            <tint_over_life>
+                <curve type="smoothstep3">
+                    <keyframe key="0.0" value="(20, 20, 20, 255)"/>
+                    <keyframe key="0.3" value="(255, 0, 0, 255)"/>
+                    <keyframe key="0.6" value="(0, 0, 255, 200)"/>
+                    <keyframe key="1.0" value="(255, 255, 255, 0)"/>
+                </curve>
+            </tint_over_life>
+
+            <scale_over_life>
+                <curve type="smoothstop2">
+                    <keyframe key="0.0" value="0.2, 0.2, 0.2"/>
+                    <keyframe key="0.5" value="0.5, 0.5, 0.5"/>
+                    <keyframe key="1.0" value="1.0, 1.0, 1.0"/>
+                </curve>
+            </scale_over_life>
+
+            <!--
+            <scale_over_life>
+                <curve type="linear">
+                    <keyframe key="0.0" value="0.0, 0.0, 0.0"/>
+                    <keyframe key="0.2" value="1.0, 1.0, 1.0"/>
+                    <keyframe key="1.0" value="0.2, 0.2, 0.2"/>
+                </curve>
+            </scale_over_life>
+
+            <velocity_over_life>
+                <curve type="smoothstart2">
+                <curve type="smoothstop2">
+                <curve type="smoothstep3">
+                <curve type="linear">
+                    <keyframe key="0.0" value="0.0, 0.0, 0.0"/>
+                    <keyframe key="1.0" value="1.0, 1.0, 1.0"/>
+                </curve>
+            </velocity_over_life>
+
+            <angular_velocity_over_life>
+            </angular_velocity_over_life>
+
+            <acceleration_over_life>
+            </acceleration_over_life>
+
+            <scale_over_life>
+            </scale_over_life>
+
+            <tint_over_life>
+            </tint_over_life>
+            -->
+
+            <is_depth_sorted />
+            <is_billboarded />
+            <die_on_collision />
+        </emitter>
+        <emitter name="sparks">
+            <location value="0.0, 10.0, 0.0">
+                <distribution type="sphere" radius="10"/>
+            </location>
+
+            <material name="Data/Materials/p_spark.mat" />
+            <tint value="yellow" />
+
+            <initial_spawn_amount value="400~600" />
+            <spawn_rate_seconds value="350.0" />
+            <emitter_lifetime_seconds value="5.0" />
+            <particle_lifetime_seconds value="1.0~2.5" />
+
+            <initial_velocity>
+                <distribution type="cone" length="5" half_angle="45">
+            </initial_velocity>
+
+            <initial_rotational_velocity/>
+            <initial_acceleration value="0.0, -0.5, 0.0" />
+            <initial_scale value="0.05, 0.05, 0.05" />
+            <stretch_with_velocity />
+        </emitter>
+    </particle_effect>
+</particle_effects>
